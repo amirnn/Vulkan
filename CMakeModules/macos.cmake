@@ -1,4 +1,7 @@
 message("Running on a Linux platform.")
 include_directories(/usr/local/include)
-add_executable(HelloWindow src/HelloWindow.cc)
+set(Triangle src/Triangle.cc include/Triangle.h)
+add_executable(test src/0.init.cc)
+target_link_libraries(test ${Vulkan_LIBRARIES} ${OPENGL_LIBRARIES} glfw)
+add_executable(HelloWindow src/1.HelloWindow.cc ${Triangle})
 target_link_libraries(HelloWindow ${Vulkan_LIBRARIES} ${OPENGL_LIBRARIES} glfw)
