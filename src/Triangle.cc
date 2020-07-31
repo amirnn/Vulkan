@@ -51,7 +51,7 @@ void Triangle::createInstance()
         createInfo.ppEnabledExtensionNames = glfwExtensions;
         createInfo.enabledLayerCount = 0;
     }
-     // Extension Handling
+    // Extension Handling
     {
         uint32_t extensionCount = 0;
         vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
@@ -63,9 +63,18 @@ void Triangle::createInstance()
         {
             std::cout << '\t' << extension.extensionName << '\n';
         }
+
+        std::cout << "Extensions Enabled: " << *createInfo.ppEnabledExtensionNames << std::endl;
+        auto result = std::find_if(extensions.begin(), extensions.end(), [&](VkExtensionProperties item)->bool{
+            if (*createInfo.ppEnabledExtensionNames == item.extensionName)
+                return true;
+            return false;
+        });
+        if (result != extensions.end())
+            std::cout << "Required Extension Found." << std::endl;
     }
+
     VkResult result = vkCreateInstance(&createInfo, nullptr, &instance);
     if (result != VK_SUCCESS)
         throw std::runtime_error("failed to create instance!");
-   
 };

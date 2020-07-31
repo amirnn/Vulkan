@@ -7,6 +7,8 @@
 #include <stdexcept>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
+#include <iterator>
 
 class Triangle {
 public:
