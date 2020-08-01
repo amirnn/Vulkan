@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <string>
 
 class Triangle {
 public:

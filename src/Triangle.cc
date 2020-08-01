@@ -66,7 +66,7 @@ void Triangle::createInstance()
 
         std::cout << "Extensions Enabled: " << *createInfo.ppEnabledExtensionNames << std::endl;
         auto result = std::find_if(extensions.begin(), extensions.end(), [&](VkExtensionProperties item)->bool{
-            if (*createInfo.ppEnabledExtensionNames == item.extensionName)
+            if (std::string(*createInfo.ppEnabledExtensionNames) == std::string(item.extensionName))
                 return true;
             return false;
         });
